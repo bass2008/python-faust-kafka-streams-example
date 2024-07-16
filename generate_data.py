@@ -3,12 +3,10 @@ import random
 import json
 from confluent_kafka import Producer
 
-# Конфигурация Kafka
 kafka_config = {
     "bootstrap.servers": "localhost:9092"
 }
 
-# Создание продюсера
 producer = Producer(kafka_config)
 
 def delivery_report(err, msg):
@@ -17,7 +15,6 @@ def delivery_report(err, msg):
     else:
         print(f"Message delivered to {msg.topic()} [{msg.partition()}]")
 
-# Генерация и отправка данных
 for i in range(100):
     product = {
         "id": i,
