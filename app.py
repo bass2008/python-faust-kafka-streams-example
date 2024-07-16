@@ -23,12 +23,12 @@ app = faust.App(
     topic_partitions=1,
 )
 
-purchases_topic = app.topic("purchases_5", value_type=Purchase, partitions=1)
-products_topic = app.topic("products_5", value_type=Product, partitions=1)
-alerts_topic = app.topic("alerts_5", value_type=Alert, partitions=1)
+purchases_topic = app.topic("purchases", value_type=Purchase, partitions=1)
+products_topic = app.topic("products", value_type=Product, partitions=1)
+alerts_topic = app.topic("alerts", value_type=Alert, partitions=1)
 
-products_table = app.Table("products_table_5", default=Product, partitions=1)
-sales_table = app.Table("sales_table_5", default=float, partitions=1).tumbling(
+products_table = app.Table("products_table", default=Product, partitions=1)
+sales_table = app.Table("sales_table", default=float, partitions=1).tumbling(
     timedelta(minutes=1), expires=timedelta(minutes=1)
 )
 
