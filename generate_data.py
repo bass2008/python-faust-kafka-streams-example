@@ -23,7 +23,7 @@ for i in range(100):
         "price": round(random.uniform(50, 70), 2),
     }
     producer.produce(
-        topic="products_5",
+        topic="products",
         key=str(i),
         value=json.dumps(product),
         on_delivery=delivery_report
@@ -37,7 +37,7 @@ for i in range(100):
             "timestamp" : int(time.time())
         }
         producer.produce(
-            topic="purchases_5",
+            topic="purchases",
             key=str(purchase["id"]),
             value=json.dumps(purchase),
             on_delivery=delivery_report
