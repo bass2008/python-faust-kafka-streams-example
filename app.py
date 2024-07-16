@@ -20,10 +20,9 @@ class Alert(faust.Record):
 app = faust.App(
     "product-alert-app",
     broker="kafka://localhost:9092",
-    topic_partitions=1,  # Устанавливаем количество партиций для всех тем
+    topic_partitions=1,
 )
 
-# Обновляем определения тем и таблиц
 purchases_topic = app.topic("purchases_5", value_type=Purchase, partitions=1)
 products_topic = app.topic("products_5", value_type=Product, partitions=1)
 alerts_topic = app.topic("alerts_5", value_type=Alert, partitions=1)
